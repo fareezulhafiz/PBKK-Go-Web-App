@@ -2,12 +2,30 @@
 <html>
 <head>
     <title>Editing {{.Title}}</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
 </head>
 <body>
-    <h1>Editing {{.Title}}</h1>
-    <form action="/save/{{.Title}}" method="POST">
-        <textarea name="body" rows="20" cols="80">{{printf "%s" .Body}}</textarea><br>
-        <input type="submit" value="Save">
-    </form>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Simple Wiki</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/view/{{.Title}}">View Page</a></li>
+                    <li class="current"><a href="/edit/{{.Title}}">Edit Page</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="content">
+            <h1>Editing {{.Title}}</h1>
+            <form action="/save/{{.Title}}" method="POST">
+                <textarea name="body">{{printf "%s" .Body}}</textarea><br>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </div>
 </body>
 </html>
